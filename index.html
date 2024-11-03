@@ -5,67 +5,56 @@
 <script type="text/JavaScript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
 <body>
-    <input type="number" id="moneyInput" placeholder="금액 입력" />
-    <input type="button" onClick="saveMoney();" value="금액 저장"/>
     <input type="button" onClick="sendLinkCustom();" value="커스텀 템플릿 타입"/>
     <input type="button" onClick="sendLinkDefault();" value="보통 타입"/>
 
 <script type="text/javascript">
-    let money;
-
-    function saveMoney() {
-        const input = document.getElementById('moneyInput').value;
-        if (!isNaN(input) && input.trim() !== '') {
-            money = Number(input);
-            alert('금액이 저장되었습니다: ' + money);
-        } else {
-            alert('숫자만 입력해주세요.');
-        }
-    }
-
-    function sendLinkCustom() {
-        Kakao.init('fa6bab2324b7c885bfdee15dadd43689'); 
+    function sendLinkCustom() { //CASE1. '사용자 정의 메세지' 보내기
+        Kakao.init('fa6bab2324b7c885bfdee15dadd43689'); //문자열 형태로 입력
         Kakao.Link.sendCustom({
-            templateId: 76565 
+            templateId: 76565 //숫자 형태로 입력
         });
     }
+</script>
 
-    function sendLinkDefault() {
-        Kakao.init('fa6bab2324b7c885bfdee15dadd43689');
-        Kakao.Link.sendDefault({
-            objectType: 'feed',
-            content: {
-                title: '딸기 바닐라 치즈 케익',
-                description: '#케익 #딸기 #삼평동 #카페 #분위기 #소개팅',
-                imageUrl: 'https://yip.su/152Sv7.png',
-                link: {
-                    mobileWebUrl: 'https://developers.kakao.com',
-                    webUrl: 'https://developers.kakao.com',
-                },
-            },
-            social: {
-                likeCount: 286,
-                commentCount: 45,
-                sharedCount: 845,
-            },
-            buttons: [
-                {
-                    title: '웹으로 보기',
-                    link: {
-                        mobileWebUrl: 'https://developers.kakao.com',
-                        webUrl: 'https://developers.kakao.com',
-                    },
-                },
-                {
-                    title: '앱으로 보기',
-                    link: {
-                        mobileWebUrl: 'https://developers.kakao.com',
-                        webUrl: 'https://developers.kakao.com',
-                    },
-                },
-            ],
-        });
-    }
+<script>
+  function sendLinkDefault() { //CASE2. '기본 메세지' 보내기
+    Kakao.init('fa6bab2324b7c885bfdee15dadd43689'); //문자열 형태로 입력
+    Kakao.Link.sendDefault({
+      objectType: 'feed',
+      content: {
+        title: '딸기 바닐라 치즈 케익',
+        description: '#케익 #딸기 #삼평동 #카페 #분위기 #소개팅',
+        imageUrl:
+          'https://iplogger.com/2nNjGq.png',
+        link: {
+          mobileWebUrl: 'https://developers.kakao.com',
+          webUrl: 'https://developers.kakao.com',
+        },
+      },
+      social: {
+        likeCount: 286,
+        commentCount: 45,
+        sharedCount: 845,
+      },
+      buttons: [
+        {
+          title: '웹으로 보기',
+          link: {
+            mobileWebUrl: 'https://developers.kakao.com',
+            webUrl: 'https://developers.kakao.com',
+          },
+        },
+        {
+          title: '앱으로 보기',
+          link: {
+            mobileWebUrl: 'https://developers.kakao.com',
+            webUrl: 'https://developers.kakao.com',
+          },
+        },
+      ],
+    })
+  }
 </script>
 </body>
 </html>
