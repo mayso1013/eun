@@ -3,39 +3,58 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>카카오 링크 보내기</title>
 <script type="text/JavaScript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-<style>
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        background-color: #f9f9f9;
-    }
-    button {
-        font-size: 36px; /* 폰트 크기 조정 */
-        padding: 30px 60px; /* 패딩 조정 */
-        cursor: pointer;
-        border: none; /* 테두리 제거 */
-        border-radius: 10px; /* 둥근 모서리 */
-        background-color: #ffcc00; /* 배경 색상 추가 */
-        transition: background-color 0.3s; /* 호버 효과 */
-    }
-    button:hover {
-        background-color: #ffbb00; /* 호버 시 배경 색상 변경 */
-    }
-</style>
 </head>
 <body>
-    <input type="button" onClick="sendLinkCustom();" value="1원 송금" />
-    
+    <input type="button" onClick="sendLinkCustom();" value="커스텀 템플릿 타입"/>
+    <input type="button" onClick="sendLinkDefault();" value="보통 타입"/>
+
 <script type="text/javascript">
     function sendLinkCustom() { //CASE1. '사용자 정의 메세지' 보내기
-        Kakao.init('d58cb1f7a256c85047678600bdc41d3c'); //문자열 형태로 입력
+        Kakao.init('0b46a94560070052c5a88985d277e429'); //문자열 형태로 입력
         Kakao.Link.sendCustom({
-            templateId: 113849 //숫자 형태로 입력
+            templateId: 76592 //숫자 형태로 입력
         });
     }
+</script>
+
+<script>
+  function sendLinkDefault() { //CASE2. '기본 메세지' 보내기
+    Kakao.init('0b46a94560070052c5a88985d277e429'); //문자열 형태로 입력
+    Kakao.Link.sendDefault({
+      objectType: 'feed',
+      content: {
+        title: '딸기 바닐라 치즈 케익',
+        description: '#케익 #딸기 #삼평동 #카페 #분위기 #소개팅',
+        imageUrl:
+          'https://yip.su/15pSv7.gif',
+        link: {
+          mobileWebUrl: 'https://developers.kakao.com',
+          webUrl: 'https://developers.kakao.com',
+        },
+      },
+      social: {
+        likeCount: 286,
+        commentCount: 45,
+        sharedCount: 845,
+      },
+      buttons: [
+        {
+          title: '웹으로 보기',
+          link: {
+            mobileWebUrl: 'https://developers.kakao.com',
+            webUrl: 'https://developers.kakao.com',
+          },
+        },
+        {
+          title: '앱으로 보기',
+          link: {
+            mobileWebUrl: 'https://developers.kakao.com',
+            webUrl: 'https://developers.kakao.com',
+          },
+        },
+      ],
+    })
+  }
 </script>
 </body>
 </html>
